@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RRB Form</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .body-bg-style
+        {
+            background-color: #e7e7e7;
+        }
+        .text-style
+        {
+            font-size: 21px;
+            font-weight: 480;
+            color: #333333;
+        }
+    </style>
+</head>
+<body class="body-bg-style">
+    <a href="index.html" class="ml-2">Home</a>
+    <div class="container">
+        <h3 class="text-center bg-primary p-2 mt-1 text-white" style="border-radius:10px;">
+            Registration form for RRB</h3>
+        <div>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+     <input type="email" class="form-control" placeholder ="Enter email " id="mailid">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+     <input type="password" class="form-control" placeholder ="Enter password " id="pwd">
+            </div>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+     <input type="text" class="form-control" placeholder ="Enter name " id="name">
+            </div>
+            <div class="form-group">
+                <label for="mobile number">Mobile number:</label>
+     <input type="number" class="form-control" placeholder ="Enter mobile number " id="mobilenumber">
+            </div>
+             <div class="form-group">
+                 <label for="Gender">Gender:</label>
+                 <input type="radio" name="gender" value="male" id="gm"> male
+                <input type="radio" name="gender" value="female" id="gf"> female
+            </div>
+            <div class="form-group">
+                <label for="qualification">Your qualification:</label>
+                <select name="form-control" id="qualification">
+                    <option>Choose qualification</option>
+                    <option>Bsc general</option>
+                    <option>Bsc it</option>
+                </select>
+            </div>
+            <input type="file" class="form-control-file border">
+            <div class="btn-group d-flex justify-content-end mb-2">
+                <button type="submit" class="btn btn-success mr-2" onclick="submitForm()">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </div>
+          </div>
+        </div>
+      
+    </div> 
+    
+
+<div id="display-area" class="container">
+    <div class="alert alert-success">
+        <strong>Your form is successfully submitted!</strong>
+    </div>
+    <div id="details"></div>
+</div>
+
+<script>
+//alert("load");
+$("#display-area").hide();
+function submitForm()
+{ 
+    var mailid =$("#mailid").val();
+    var pwd =$("#pwd").val();
+    var name =$("#name").val();
+    var mobilenumber =$("#mobilenumber").val();
+    var gm =$("#gm").val();
+    var gf =$("#gf").val();
+    var qualification =$("#qualification").val();
+
+    $("#details")
+    .html(`<p>
+            <span class="text-style">Name:</span> ${name} <br> 
+            <span class="text-style">Email:</span> ${mailid} <br>
+           <span class="text-style">Password:</span> ${pwd} <br>
+           <span class="text-style"> Mobile number:</span> ${mobilenumber} <br>
+        </p>`);
+
+    //alert("after form submit");
+    $("#display-area").show();
+}
+</script>
+</body>
+</html>

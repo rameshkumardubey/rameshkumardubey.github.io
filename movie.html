@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie search</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    
+</head>
+<body>
+    <a href="index.html">Home</a>
+    <input type="text" id="movie-search" placeholder="Enter movie name to search"/>
+    <button onclick="searchMovie()">Search</button>
+    <div id="main-section">
+
+    </div>
+
+    <script>
+        function searchMovie()
+        { var searchValue =  $("#movie-search").val();
+
+            //alert("called " + searchValue);
+            $.get("https://www.omdbapi.com?i=tt3896198&apikey=42aa820e&s="+searchValue,function(resp){
+                    console.log(resp)
+                    var htmlData = '';
+                    if(resp.Response == "True")
+                    {    for(var i=0; i<resp.Search.length; i++)
+                        {
+                            var movie = resp.Search[i];
+                            htmlData = htmlData + 
+                            `<h2>Movie name: ${movie.Title} <br> Release year: ${movie.Year}</h2>
+                            <img src=${movie.Poster} /> <br>` ;
+                            console.log("Movie name: "+ movie.Title + ", Release year: "+movie.Year);
+                        }
+                    }
+                    else{
+                        htmlData = "<h3> No movie found for search!</h3>";
+                    }
+                    $("#main-section").html(htmlData);
+                }).fail(function(){
+                    console.log("fail to get the data")
+                });
+        }
+        $(document).ready( function(){
+               
+        });
+    </script>
+</body>
+</html>

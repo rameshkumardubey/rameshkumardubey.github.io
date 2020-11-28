@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <style>
+#mydiv {
+width: 100%;
+padding: 50px;
+text-align: center;
+background-color: lightblue;
+margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <button   >try it </button>
+    <div id="mydiv" class="classdiv"> this is my div element.</div>
+    <p><b>Note:</b> The element will not take up any space when the
+         display property set to "none".</p>
+         <input type="text" name="">
+          <span id="focusid">welcome</span>
+          <span id="blurid">take care</span>
+    <script>
+
+$(document).ready(function(){
+    // $('button').dblclick(function(){
+    //     $('.classdiv').toggle(1000);
+    // });
+
+
+
+    $('span').hide();
+    $('input').focus(function(){
+$('#focusid').show().fadeOut(3000);
+});
+
+$('input').blur(function(){
+$('#blurid').show().fadeOut(3000);
+});
+});
+
+    </script>
+</body>
+</html>
